@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harvestly — Farm-Fresh Groceries Delivered Daily</title>
+<meta name="description" content="Harvestly delivers farm-fresh vegetables, fruits, dairy and pantry staples to your door in under 90 minutes. Order premium groceries online today.">
+<meta name="keywords" content="grocery delivery, fresh vegetables, fresh fruits, online grocery store, organic groceries, same day delivery">
+<meta name="author" content="Harvestly">
+
+<meta property="og:title" content="Harvestly — Farm-Fresh Groceries Delivered Daily">
+<meta property="og:description" content="Shop farm-fresh produce, dairy and pantry staples online. Delivered to your door in under 90 minutes.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="hero.jpg">
+
+<link rel="icon" href="hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner container">
+    <a href="#home" class="logo" aria-label="Harvestly home">
+      <span class="logo-mark">H</span>
+      <span class="logo-text">Harvestly</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#featured">Shop</a></li>
+        <li><a href="#deals">Deals</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Open search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="View cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Get the App</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="search-panel" id="searchPanel">
+    <div class="container search-panel-inner">
+      <input type="search" placeholder="Search for tomatoes, milk, rice…" aria-label="Search products" id="searchInput">
+      <button class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="hero.jpg" alt="Crates overflowing with fresh vegetables and fruit at sunrise" loading="eager">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-content reveal-up">
+        <span class="stamp stamp-gold">Farm to Door · Est. Local</span>
+        <h1 class="hero-title">Groceries picked this morning, <em>on your counter</em> by evening.</h1>
+        <p class="hero-sub">Harvestly sources directly from 120+ regional farms and delivers within 90 minutes — no warehouses, no weeks-old produce, just what's actually in season.</p>
+
+        <form class="hero-search" id="heroSearchForm">
+          <label for="heroPincode" class="sr-only">Enter your delivery pincode</label>
+          <input type="text" id="heroPincode" placeholder="Enter your delivery pincode" required>
+          <button type="submit" class="btn btn-primary">Check Delivery</button>
+        </form>
+        <p class="hero-note" id="heroNote" aria-live="polite"></p>
+
+        <div class="hero-tags">
+          <div class="crate-tag">
+            <span class="crate-tag-num">90<small>min</small></span>
+            <span class="crate-tag-label">Avg. Delivery</span>
+          </div>
+          <div class="crate-tag">
+            <span class="crate-tag-num">120<small>+</small></span>
+            <span class="crate-tag-label">Partner Farms</span>
+          </div>
+          <div class="crate-tag">
+            <span class="crate-tag-num">98<small>%</small></span>
+            <span class="crate-tag-label">Same-day Rated Fresh</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#categories" class="scroll-cue" aria-label="Scroll to categories">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ============ MARQUEE STRIP ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>No synthetic ripening</span><span>•</span>
+      <span>Cold-chain delivery</span><span>•</span>
+      <span>120+ local farms</span><span>•</span>
+      <span>Zero pre-packed plastic</span><span>•</span>
+      <span>Picked within 24 hours</span><span>•</span>
+      <span>No synthetic ripening</span><span>•</span>
+      <span>Cold-chain delivery</span><span>•</span>
+      <span>120+ local farms</span><span>•</span>
+      <span>Zero pre-packed plastic</span><span>•</span>
+      <span>Picked within 24 hours</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Browse the crates</span>
+        <h2>Shop by Category</h2>
+        <p>Six aisles, everything cross-docked from farm to fridge in a single day.</p>
+      </div>
+
+      <div class="cat-grid">
+        <a href="#featured" class="cat-card reveal-up">
+          <img src="vegetables.jpg" alt="Fresh seasonal vegetables" loading="lazy">
+          <div class="cat-card-body">
+            <h3>Vegetables</h3>
+            <span>32 items</span>
+          </div>
+        </a>
+        <a href="#featured" class="cat-card reveal-up">
+          <img src="fruits.jpg" alt="Fresh seasonal fruits" loading="lazy">
+          <div class="cat-card-body">
+            <h3>Fruits</h3>
+            <span>27 items</span>
+          </div>
+        </a>
+        <a href="#featured" class="cat-card reveal-up">
+          <img src="dairy.jpg" alt="Milk, cheese and dairy products" loading="lazy">
+          <div class="cat-card-body">
+            <h3>Dairy & Eggs</h3>
+            <span>19 items</span>
+          </div>
+        </a>
+        <a href="#featured" class="cat-card reveal-up">
+          <img src="bakery.jpg" alt="Freshly baked bread" loading="lazy">
+          <div class="cat-card-body">
+            <h3>Bakery</h3>
+            <span>14 items</span>
+          </div>
+        </a>
+        <a href="#featured" class="cat-card reveal-up">
+          <img src="grains.jpg" alt="Rice, grains and pulses" loading="lazy">
+          <div class="cat-card-body">
+            <h3>Grains & Pulses</h3>
+            <span>21 items</span>
+          </div>
+        </a>
+        <a href="#featured" class="cat-card reveal-up">
+          <img src="oil.jpg" alt="Cooking oil and ghee" loading="lazy">
+          <div class="cat-card-body">
+            <h3>Oil & Ghee</h3>
+            <span>11 items</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED PRODUCTS ============ -->
+  <section class="section section-tint" id="featured">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">This week's pick</span>
+        <h2>Featured Products</h2>
+        <p>Hand-selected by our produce team for peak ripeness and flavour.</p>
+      </div>
+
+      <div class="product-grid" id="featuredGrid">
+        <!-- Product cards injected by script.js also work statically; kept static for no-JS support -->
+        <article class="product-card reveal-up" data-name="Vine Tomatoes" data-price="3.49">
+          <div class="product-media">
+            <span class="stamp stamp-mini">Fresh</span>
+            <img src="tomato.jpg" alt="Vine-ripened tomatoes" loading="lazy">
+            <button class="add-btn" data-name="Vine Tomatoes" data-price="3.49" aria-label="Add Vine Tomatoes to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Vine Tomatoes</h3>
+            <span class="product-unit">500g pack</span>
+            <div class="product-bottom">
+              <span class="price">$3.49</span>
+              <div class="stars" aria-label="4.8 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Royal Gala Apples" data-price="4.29">
+          <div class="product-media">
+            <span class="stamp stamp-mini">New</span>
+            <img src="apple.jpg" alt="Royal Gala apples" loading="lazy">
+            <button class="add-btn" data-name="Royal Gala Apples" data-price="4.29" aria-label="Add Royal Gala Apples to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Royal Gala Apples</h3>
+            <span class="product-unit">1 kg pack</span>
+            <div class="product-bottom">
+              <span class="price">$4.29</span>
+              <div class="stars" aria-label="4.6 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Farmhouse Whole Milk" data-price="2.19">
+          <div class="product-media">
+            <img src="milk.jpg" alt="Farmhouse whole milk bottle" loading="lazy">
+            <button class="add-btn" data-name="Farmhouse Whole Milk" data-price="2.19" aria-label="Add Farmhouse Whole Milk to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Farmhouse Whole Milk</h3>
+            <span class="product-unit">1 litre</span>
+            <div class="product-bottom">
+              <span class="price">$2.19</span>
+              <div class="stars" aria-label="4.9 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Sourdough Loaf" data-price="3.99">
+          <div class="product-media">
+            <span class="stamp stamp-mini">Baked Today</span>
+            <img src="bread.jpg" alt="Sourdough bread loaf" loading="lazy">
+            <button class="add-btn" data-name="Sourdough Loaf" data-price="3.99" aria-label="Add Sourdough Loaf to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Sourdough Loaf</h3>
+            <span class="product-unit">600g</span>
+            <div class="product-bottom">
+              <span class="price">$3.99</span>
+              <div class="stars" aria-label="4.7 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Raw Wildflower Honey" data-price="6.49">
+          <div class="product-media">
+            <img src="honey.jpg" alt="Jar of raw wildflower honey" loading="lazy">
+            <button class="add-btn" data-name="Raw Wildflower Honey" data-price="6.49" aria-label="Add Raw Wildflower Honey to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Raw Wildflower Honey</h3>
+            <span class="product-unit">350g jar</span>
+            <div class="product-bottom">
+              <span class="price">$6.49</span>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Free-range Eggs" data-price="3.29">
+          <div class="product-media">
+            <span class="stamp stamp-mini">Fresh</span>
+            <img src="eggs.jpg" alt="Tray of free-range eggs" loading="lazy">
+            <button class="add-btn" data-name="Free-range Eggs" data-price="3.29" aria-label="Add Free-range Eggs to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Free-range Eggs</h3>
+            <span class="product-unit">Pack of 12</span>
+            <div class="product-bottom">
+              <span class="price">$3.29</span>
+              <div class="stars" aria-label="4.8 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEST SELLING ============ -->
+  <section class="section" id="bestsellers">
+    <div class="container">
+      <div class="section-head split reveal-up">
+        <div>
+          <span class="eyebrow">Crowd favourites</span>
+          <h2>Best Selling Products</h2>
+        </div>
+        <p>The staples our customers reorder most, every single week.</p>
+      </div>
+
+      <div class="product-grid product-grid-4">
+        <article class="product-card reveal-up" data-name="Basmati Rice" data-price="8.99">
+          <div class="product-media">
+            <span class="rank-badge">01</span>
+            <img src="rice.jpg" alt="Basmati rice bag" loading="lazy">
+            <button class="add-btn" data-name="Basmati Rice" data-price="8.99" aria-label="Add Basmati Rice to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Aged Basmati Rice</h3>
+            <span class="product-unit">5 kg bag</span>
+            <div class="product-bottom">
+              <span class="price">$8.99</span>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Whole Spice Set" data-price="5.99">
+          <div class="product-media">
+            <span class="rank-badge">02</span>
+            <img src="spices.jpg" alt="Assorted whole spices" loading="lazy">
+            <button class="add-btn" data-name="Whole Spice Set" data-price="5.99" aria-label="Add Whole Spice Set to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Whole Spice Set</h3>
+            <span class="product-unit">Set of 6</span>
+            <div class="product-bottom">
+              <span class="price">$5.99</span>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Hass Avocados" data-price="4.99">
+          <div class="product-media">
+            <span class="rank-badge">03</span>
+            <img src="avocado.jpg" alt="Hass avocados" loading="lazy">
+            <button class="add-btn" data-name="Hass Avocados" data-price="4.99" aria-label="Add Hass Avocados to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Hass Avocados</h3>
+            <span class="product-unit">Pack of 4</span>
+            <div class="product-bottom">
+              <span class="price">$4.99</span>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal-up" data-name="Aged Cheddar" data-price="7.49">
+          <div class="product-media">
+            <span class="rank-badge">04</span>
+            <img src="cheese.jpg" alt="Block of aged cheddar cheese" loading="lazy">
+            <button class="add-btn" data-name="Aged Cheddar" data-price="7.49" aria-label="Add Aged Cheddar to cart">+</button>
+          </div>
+          <div class="product-info">
+            <h3>Aged Cheddar</h3>
+            <span class="product-unit">400g block</span>
+            <div class="product-bottom">
+              <span class="price">$7.49</span>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DAILY DEALS ============ -->
+  <section class="section deals-section" id="deals">
+    <div class="container">
+      <div class="section-head light reveal-up">
+        <span class="eyebrow eyebrow-light">Today only</span>
+        <h2>Daily Deals</h2>
+        <p>Fresh discounts, reset every midnight. Grab them before the timer runs out.</p>
+      </div>
+
+      <div class="deals-grid">
+        <div class="deal-card deal-card-lg reveal-up">
+          <img src="deal1.jpg" alt="Crate of mixed seasonal vegetables on sale">
+          <div class="deal-card-body">
+            <span class="stamp stamp-red">-30% Today</span>
+            <h3>Seasonal Veg Box</h3>
+            <p>A curated 5kg mix of whatever's peaking in the fields this week.</p>
+            <div class="deal-price"><span class="old-price">$18.00</span><span class="price">$12.60</span></div>
+            <div class="countdown" data-hours="6" data-mins="42" aria-label="Deal ends in">
+              <span class="cd-h">06</span>:<span class="cd-m">42</span>:<span class="cd-s">00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="deal-card reveal-up">
+          <img src="deal2.jpg" alt="Basket of citrus fruits on sale">
+          <div class="deal-card-body">
+            <span class="stamp stamp-red">-20% Today</span>
+            <h3>Citrus Basket</h3>
+            <div class="deal-price"><span class="old-price">$9.50</span><span class="price">$7.60</span></div>
+            <div class="countdown" data-hours="6" data-mins="42" aria-label="Deal ends in">
+              <span class="cd-h">06</span>:<span class="cd-m">42</span>:<span class="cd-s">00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="deal-card reveal-up">
+          <img src="cheese.jpg" alt="Dairy bundle on sale">
+          <div class="deal-card-body">
+            <span class="stamp stamp-red">-15% Today</span>
+            <h3>Dairy Bundle</h3>
+            <div class="deal-price"><span class="old-price">$14.00</span><span class="price">$11.90</span></div>
+            <div class="countdown" data-hours="6" data-mins="42" aria-label="Deal ends in">
+              <span class="cd-h">06</span>:<span class="cd-m">42</span>:<span class="cd-s">00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US ============ -->
+  <section class="section" id="why">
+    <div class="container why-grid">
+      <div class="why-media reveal-up">
+        <img src="about.jpg" alt="Harvestly team sorting fresh produce crates" loading="lazy">
+        <div class="why-media-badge">
+          <strong>12 yrs</strong>
+          <span>Serving local families</span>
+        </div>
+      </div>
+
+      <div class="why-content reveal-up">
+        <span class="eyebrow">Why choose us</span>
+        <h2>We built the grocery run we always wished existed.</h2>
+        <p>Harvestly started as a single market stall in 2013. Today we still buy directly from growers each morning — no distributors, no cold storage for weeks. It's just a shorter, honest supply chain.</p>
+
+        <ul class="why-list">
+          <li>
+            <span class="why-icon">🌱</span>
+            <div>
+              <h3>Farm-direct sourcing</h3>
+              <p>We work with 120+ regional farms, cutting out middlemen so produce reaches you within 24 hours of harvest.</p>
+            </div>
+          </li>
+          <li>
+            <span class="why-icon">🚚</span>
+            <div>
+              <h3>90-minute delivery</h3>
+              <p>Order before 8pm and our cold-chain riders get it to your door same evening, temperature-controlled.</p>
+            </div>
+          </li>
+          <li>
+            <span class="why-icon">🔍</span>
+            <div>
+              <h3>Full traceability</h3>
+              <p>Every crate is tagged with the farm it came from — scan the label on your invoice to see the source.</p>
+            </div>
+          </li>
+          <li>
+            <span class="why-icon">↩️</span>
+            <div>
+              <h3>No-fuss returns</h3>
+              <p>Not happy with ripeness or quality? We refund or replace the item, no questions, no receipts needed.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CUSTOMER REVIEWS ============ -->
+  <section class="section section-tint" id="reviews">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Word on the street</span>
+        <h2>Customer Reviews</h2>
+        <p>1,900+ verified ratings and counting.</p>
+      </div>
+
+      <div class="review-slider">
+        <div class="review-track" id="reviewTrack">
+          <blockquote class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"The tomatoes actually taste like tomatoes again. Delivery landed in under an hour and the crate smelled like an actual farm stand."</p>
+            <footer>
+              <img src="avatar1.jpg" alt="Portrait of Maria Chen">
+              <div><cite>Maria Chen</cite><span>Verified customer, Elmhurst</span></div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Switched our entire household shop to Harvestly. The daily deals alone have paid for a membership tier we don't even have."</p>
+            <footer>
+              <img src="avatar2.jpg" alt="Portrait of Daniel Osei">
+              <div><cite>Daniel Osei</cite><span>Verified customer, Riverside</span></div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Love that I can see which farm my eggs came from. Small detail but it changed how I think about grocery shopping."</p>
+            <footer>
+              <img src="avatar3.jpg" alt="Portrait of Priya Nair">
+              <div><cite>Priya Nair</cite><span>Verified customer, Northgate</span></div>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="review-controls">
+          <button id="reviewPrev" aria-label="Previous review">&larr;</button>
+          <div class="review-dots" id="reviewDots"></div>
+          <button id="reviewNext" aria-label="Next review">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DELIVERY INFO ============ -->
+  <section class="section delivery-section" id="delivery">
+    <div class="container delivery-grid">
+      <div class="delivery-content reveal-up">
+        <span class="eyebrow">How it works</span>
+        <h2>Delivery Information</h2>
+        <div class="delivery-steps">
+          <div class="delivery-step">
+            <span class="step-num">1</span>
+            <div>
+              <h3>Place your order</h3>
+              <p>Shop online until 8:00 pm for same-evening delivery, or schedule a slot up to 5 days ahead.</p>
+            </div>
+          </div>
+          <div class="delivery-step">
+            <span class="step-num">2</span>
+            <div>
+              <h3>We pack cold</h3>
+              <p>Produce is packed in insulated crates within minutes of your order at our nearest local hub.</p>
+            </div>
+          </div>
+          <div class="delivery-step">
+            <span class="step-num">3</span>
+            <div>
+              <h3>Track live</h3>
+              <p>Follow your rider on the map from hub to doorstep, with an ETA accurate to the minute.</p>
+            </div>
+          </div>
+        </div>
+        <div class="delivery-facts">
+          <div><strong>$0</strong><span>Delivery fee over $35</span></div>
+          <div><strong>90 min</strong><span>Average delivery time</span></div>
+          <div><strong>7 days</strong><span>A week, 7am – 11pm</span></div>
+        </div>
+      </div>
+      <div class="delivery-media reveal-up">
+        <img src="delivery.jpg" alt="Delivery rider handing over a grocery crate" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Inside Harvestly</span>
+        <h2>From the Hubs</h2>
+      </div>
+      <div class="gallery-grid">
+        <img src="gallery1.jpg" alt="Sorting shelves at a Harvestly hub" loading="lazy" class="reveal-up">
+        <img src="gallery2.jpg" alt="Farmer harvesting vegetables at dawn" loading="lazy" class="reveal-up">
+        <img src="gallery3.jpg" alt="Rider packing an insulated delivery crate" loading="lazy" class="reveal-up">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section-tint" id="faq">
+    <div class="container faq-wrap">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Good to know</span>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="accordion" id="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>What areas do you currently deliver to?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>We currently cover most postal codes within 15km of our four local hubs. Enter your pincode in the hero section above to confirm coverage instantly.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>How fresh is "farm to door" really?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Most produce is harvested the same morning or the evening before it's packed. We publish the harvest date on every fresh-produce listing.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>What if an item arrives damaged or unripe?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Report it within 24 hours through the app or the contact form below and we'll issue an instant refund or free replacement on your next order.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Do you offer a subscription or membership?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Yes — Harvestly+ waives delivery fees and unlocks early access to daily deals for a small monthly fee, cancel anytime.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Can I schedule recurring weekly orders?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Absolutely. Build a cart once and set it to repeat weekly or fortnightly — you can edit or skip any upcoming order before it's packed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact-section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info reveal-up">
+        <span class="eyebrow eyebrow-light">Get in touch</span>
+        <h2>We're here to help</h2>
+        <p>Questions about an order, a partnership enquiry, or just want to say hi — drop us a line.</p>
+
+        <ul class="contact-list">
+          <li><strong>Phone</strong><span>+1 (555) 214-7788</span></li>
+          <li><strong>Email</strong><span>hello@harvestly.example</span></li>
+          <li><strong>Hubs</strong><span>Elmhurst · Riverside · Northgate · Old Mill</span></li>
+          <li><strong>Hours</strong><span>Mon–Sun, 7:00 am – 11:00 pm</span></li>
+        </ul>
+
+        <div class="social-row">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal-up" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cfName">Name</label>
+            <input type="text" id="cfName" name="name" required>
+            <span class="field-error">Please enter your name.</span>
+          </div>
+          <div class="form-field">
+            <label for="cfEmail">Email</label>
+            <input type="email" id="cfEmail" name="email" required>
+            <span class="field-error">Please enter a valid email.</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cfSubject">Subject</label>
+          <input type="text" id="cfSubject" name="subject" required>
+          <span class="field-error">Please enter a subject.</span>
+        </div>
+        <div class="form-field">
+          <label for="cfMessage">Message</label>
+          <textarea id="cfMessage" name="message" rows="4" required></textarea>
+          <span class="field-error">Please enter a message.</span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        <p class="form-success" id="formSuccess" role="status" aria-live="polite">Thanks — your message has been sent. We'll reply within one business day.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="logo">
+        <span class="logo-mark">H</span>
+        <span class="logo-text">Harvestly</span>
+      </a>
+      <p>Farm-direct groceries, delivered with care since 2013.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#bestsellers">Best Sellers</a></li>
+        <li><a href="#deals">Daily Deals</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#delivery">Delivery</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Weekly harvest picks &amp; deals in your inbox.</p>
+      <form class="footer-form" id="newsletterForm">
+        <input type="email" placeholder="you@example.com" required aria-label="Email address">
+        <button type="submit" aria-label="Subscribe">&rarr;</button>
+      </form>
+      <p class="form-success" id="newsletterSuccess" role="status" aria-live="polite">Subscribed! Welcome to the harvest list.</p>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; <span id="year"></span> Harvestly. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
