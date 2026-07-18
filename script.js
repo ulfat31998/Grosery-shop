@@ -14,6 +14,7 @@
     initSearchPanel();
     initRevealAnimations();
     initCart();
+    initCheckout();
     initHeroSearch();
     initCountdowns();
     initReviewSlider();
@@ -161,7 +162,8 @@
     if (checkoutBtn) {
       checkoutBtn.addEventListener('click', function () {
         if (!cart.length) return;
-        showToast('Checkout is not available in this demo.');
+        closeCart();
+        openCheckout();
       });
     }
 
@@ -259,6 +261,9 @@
 
     if (totalEl) totalEl.textContent = '$' + totalPrice.toFixed(2);
     if (countEl) countEl.textContent = String(totalItems);
+
+    var checkoutSubtotalEl = document.getElementById('checkoutSubtotal');
+    if (checkoutSubtotalEl) checkoutSubtotalEl.textContent = '$' + totalPrice.toFixed(2);
   }
 
   function bumpCartCount() {
@@ -299,6 +304,88 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  /* ---------- Checkout modal ---------- */
+  function initCheckout() {
+    var modal = document.getElementById('checkoutModal');
+    var overlay = document.getElementById('checkoutOverlay');
+    var closeBtn = document.getElementById('checkoutClose');
+    var backBtn = document.getElementById('checkoutBack');
+    var form = document.getElementById('checkoutForm');
+    var msg = document.getElementById('checkoutFormMsg');
+    if (!modal) return;
+
+    if (closeBtn) closeBtn.addEventListener('click', closeCheckout);
+    if (overlay) overlay.addEventListener('click', closeCheckout);
+
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        closeCheckout();
+        openCart();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeCheckout();
+    });
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var valid = true;
+        var fields = form.querySelectorAll('.form-field');
+
+        fields.forEach(function (field) {
+          var control = field.querySelector('input, textarea');
+          if (!control || !control.hasAttribute('required')) return;
+          var ok = control.checkValidity() && control.value.trim() !== '';
+          field.classList.toggle('invalid', !ok);
+          if (!ok) valid = false;
+        });
+
+        if (!valid) {
+          if (msg) {
+            msg.textContent = 'Please fill in all required fields correctly.';
+            msg.classList.add('show', 'is-error');
+          }
+          return;
+        }
+
+        if (msg) {
+          msg.textContent = 'Details saved — order ready for the next step.';
+          msg.classList.remove('is-error');
+          msg.classList.add('show');
+        }
+      });
+    }
+  }
+
+  function openCheckout() {
+    var modal = document.getElementById('checkoutModal');
+    var overlay = document.getElementById('checkoutOverlay');
+    var msg = document.getElementById('checkoutFormMsg');
+    if (!modal) return;
+    if (msg) {
+      msg.textContent = '';
+      msg.classList.remove('show', 'is-error');
+    }
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    if (overlay) overlay.classList.add('open');
+    document.body.classList.add('cart-open');
+    var firstField = document.getElementById('ckName');
+    if (firstField) setTimeout(function () { firstField.focus(); }, 300);
+  }
+
+  function closeCheckout() {
+    var modal = document.getElementById('checkoutModal');
+    var overlay = document.getElementById('checkoutOverlay');
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (overlay) overlay.classList.remove('open');
+    document.body.classList.remove('cart-open');
   }
 
   /* ---------- Hero pincode check ---------- */
