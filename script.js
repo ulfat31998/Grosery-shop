@@ -426,32 +426,21 @@
 
     var totalPrice = cart.reduce(function (sum, item) { return sum + item.qty * item.price; }, 0);
 
+    var addressLine = address.trim();
+    if (landmark.trim()) addressLine += ', Landmark: ' + landmark.trim();
+
     var lines = [];
-    lines.push('🛒 NEW GROCERY ORDER');
-    lines.push('Customer Name:');
-    lines.push(name.trim());
-    lines.push('Phone:');
-    lines.push(mobile.trim());
-    lines.push('Delivery Address:');
-    lines.push(address.trim());
-    lines.push('Landmark:');
-    lines.push(landmark.trim() || 'N/A');
-    lines.push('Payment:');
-    lines.push(payment);
-    lines.push('==================');
-    lines.push('ORDER ITEMS');
-    lines.push('==================');
-    cart.forEach(function (item) {
-      lines.push(item.name);
-      lines.push('Quantity: ' + item.qty);
-      lines.push('Price: ₹' + (item.qty * item.price).toFixed(2));
-      lines.push('');
-    });
-    lines.push('==================');
-    lines.push('Subtotal:');
-    lines.push('₹' + totalPrice.toFixed(2));
+    lines.push('Customer: ' + name.trim());
+    lines.push('Phone: ' + mobile.trim());
+    lines.push('Address: ' + addressLine);
     lines.push('');
-    lines.push('Thank you.');
+    lines.push('Items:');
+    cart.forEach(function (item) {
+      lines.push('• ' + item.name + ' ×' + item.qty + ' = ₹' + (item.qty * item.price).toFixed(2));
+    });
+    lines.push('');
+    lines.push('Total: ₹' + totalPrice.toFixed(2));
+    lines.push('Payment: ' + payment);
 
     var message = lines.join('\n');
     var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
