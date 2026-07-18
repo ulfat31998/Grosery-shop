@@ -756,7 +756,7 @@
   <div class="cart-drawer-footer" id="cartFooter">
     <div class="cart-total-row">
       <span>Subtotal</span>
-      <span id="cartTotal">$0.00</span>
+      <span id="cartTotal">₹0.00</span>
     </div>
     <button class="btn btn-primary btn-block" id="cartCheckout">Checkout</button>
   </div>
@@ -773,40 +773,78 @@
   <div class="checkout-modal-body">
     <div class="checkout-summary">
       <span>Subtotal</span>
-      <span id="checkoutSubtotal">$0.00</span>
+      <span id="checkoutSubtotal">₹0.00</span>
     </div>
 
-    <form class="checkout-form" id="checkoutForm" novalidate>
-      <div class="form-field">
-        <label for="ckName">Full Name *</label>
-        <input type="text" id="ckName" name="name" required>
-        <span class="field-error">Please enter your full name.</span>
+    <!-- STEP 1: Delivery + Payment details -->
+    <div class="checkout-step checkout-step-details" id="checkoutStepDetails">
+      <form class="checkout-form" id="checkoutForm" novalidate>
+        <div class="form-field">
+          <label for="ckName">Full Name *</label>
+          <input type="text" id="ckName" name="name" required>
+          <span class="field-error">Please enter your full name.</span>
+        </div>
+
+        <div class="form-field">
+          <label for="ckMobile">Phone Number *</label>
+          <input type="tel" id="ckMobile" name="mobile" inputmode="tel" required pattern="[0-9+\-\s]{7,15}">
+          <span class="field-error">Please enter a valid phone number.</span>
+        </div>
+
+        <div class="form-field">
+          <label for="ckAddress">Delivery Address *</label>
+          <textarea id="ckAddress" name="address" rows="3" required></textarea>
+          <span class="field-error">Please enter your delivery address.</span>
+        </div>
+
+        <div class="form-field">
+          <label for="ckLandmark">Landmark <span class="checkout-optional">(optional)</span></label>
+          <input type="text" id="ckLandmark" name="landmark">
+        </div>
+
+        <fieldset class="form-field payment-field">
+          <legend>Payment Method</legend>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment" id="ckPaymentCod" value="Cash on Delivery" checked>
+              <span>Cash on Delivery</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" id="ckPaymentUpi" value="UPI">
+              <span>UPI</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <p class="checkout-form-msg" id="checkoutFormMsg" role="status" aria-live="polite"></p>
+
+        <div class="checkout-form-actions">
+          <button type="button" class="btn btn-checkout-back" id="checkoutBack">Back to Cart</button>
+          <button type="submit" class="btn btn-primary" id="checkoutContinue">Continue</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- STEP 2: Order review + WhatsApp order placement -->
+    <div class="checkout-step checkout-step-review" id="checkoutStepReview" hidden>
+      <div class="review-items" id="checkoutReviewItems"></div>
+      <div class="checkout-summary review-total">
+        <span>Subtotal</span>
+        <span id="checkoutReviewSubtotal">₹0.00</span>
       </div>
-
-      <div class="form-field">
-        <label for="ckMobile">Mobile Number *</label>
-        <input type="tel" id="ckMobile" name="mobile" inputmode="tel" required pattern="[0-9+\-\s]{7,15}">
-        <span class="field-error">Please enter a valid mobile number.</span>
-      </div>
-
-      <div class="form-field">
-        <label for="ckAddress">Delivery Address *</label>
-        <textarea id="ckAddress" name="address" rows="3" required></textarea>
-        <span class="field-error">Please enter your delivery address.</span>
-      </div>
-
-      <div class="form-field">
-        <label for="ckNote">Order Note <span class="checkout-optional">(optional)</span></label>
-        <textarea id="ckNote" name="note" rows="2"></textarea>
-      </div>
-
-      <p class="checkout-form-msg" id="checkoutFormMsg" role="status" aria-live="polite"></p>
-
       <div class="checkout-form-actions">
-        <button type="button" class="btn btn-checkout-back" id="checkoutBack">Back to Cart</button>
-        <button type="submit" class="btn btn-primary" id="checkoutContinue">Continue</button>
+        <button type="button" class="btn btn-checkout-back" id="checkoutEditDetails">Edit Details</button>
+        <button type="button" class="btn btn-primary btn-whatsapp" id="checkoutWhatsApp">Place Order on WhatsApp</button>
       </div>
-    </form>
+    </div>
+
+    <!-- STEP 3: Order confirmation -->
+    <div class="checkout-step checkout-step-success" id="checkoutStepSuccess" hidden>
+      <div class="checkout-success">
+        <p>Your order has been prepared successfully.</p>
+        <button type="button" class="btn btn-primary" id="checkoutSuccessClose">Continue Shopping</button>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -245,25 +245,28 @@
       row.innerHTML =
         '<div class="cart-item-info">' +
           '<h4>' + escapeHtml(item.name) + '</h4>' +
-          '<span class="cart-item-price">$' + item.price.toFixed(2) + ' each</span>' +
+          '<span class="cart-item-price">₹' + item.price.toFixed(2) + ' each</span>' +
         '</div>' +
         '<div class="cart-item-qty">' +
           '<button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity of ' + escapeHtml(item.name) + '">&minus;</button>' +
           '<span class="qty-val">' + item.qty + '</span>' +
           '<button type="button" class="qty-btn qty-plus" aria-label="Increase quantity of ' + escapeHtml(item.name) + '">+</button>' +
         '</div>' +
-        '<div class="cart-item-subtotal">$' + (item.qty * item.price).toFixed(2) + '</div>' +
+        '<div class="cart-item-subtotal">₹' + (item.qty * item.price).toFixed(2) + '</div>' +
         '<button type="button" class="cart-item-remove" aria-label="Remove ' + escapeHtml(item.name) + ' from cart">Remove</button>';
       itemsWrap.appendChild(row);
     });
 
     drawer.classList.toggle('is-empty', cart.length === 0);
 
-    if (totalEl) totalEl.textContent = '$' + totalPrice.toFixed(2);
+    if (totalEl) totalEl.textContent = '₹' + totalPrice.toFixed(2);
     if (countEl) countEl.textContent = String(totalItems);
 
     var checkoutSubtotalEl = document.getElementById('checkoutSubtotal');
-    if (checkoutSubtotalEl) checkoutSubtotalEl.textContent = '$' + totalPrice.toFixed(2);
+    if (checkoutSubtotalEl) checkoutSubtotalEl.textContent = '₹' + totalPrice.toFixed(2);
+
+    var checkoutReviewSubtotalEl = document.getElementById('checkoutReviewSubtotal');
+    if (checkoutReviewSubtotalEl) checkoutReviewSubtotalEl.textContent = '₹' + totalPrice.toFixed(2);
   }
 
   function bumpCartCount() {
@@ -307,6 +310,8 @@
   }
 
   /* ---------- Checkout modal ---------- */
+  var WHATSAPP_NUMBER = '917364090450';
+
   function initCheckout() {
     var modal = document.getElementById('checkoutModal');
     var overlay = document.getElementById('checkoutOverlay');
@@ -314,6 +319,9 @@
     var backBtn = document.getElementById('checkoutBack');
     var form = document.getElementById('checkoutForm');
     var msg = document.getElementById('checkoutFormMsg');
+    var editBtn = document.getElementById('checkoutEditDetails');
+    var whatsappBtn = document.getElementById('checkoutWhatsApp');
+    var successCloseBtn = document.getElementById('checkoutSuccessClose');
     if (!modal) return;
 
     if (closeBtn) closeBtn.addEventListener('click', closeCheckout);
@@ -353,12 +361,103 @@
         }
 
         if (msg) {
-          msg.textContent = 'Details saved — order ready for the next step.';
-          msg.classList.remove('is-error');
-          msg.classList.add('show');
+          msg.textContent = '';
+          msg.classList.remove('show', 'is-error');
         }
+
+        showCheckoutStep('review');
+        renderCheckoutReview();
       });
     }
+
+    if (editBtn) {
+      editBtn.addEventListener('click', function () {
+        showCheckoutStep('details');
+      });
+    }
+
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('click', function () {
+        placeOrderOnWhatsApp();
+      });
+    }
+
+    if (successCloseBtn) {
+      successCloseBtn.addEventListener('click', closeCheckout);
+    }
+  }
+
+  function showCheckoutStep(step) {
+    var details = document.getElementById('checkoutStepDetails');
+    var review = document.getElementById('checkoutStepReview');
+    var success = document.getElementById('checkoutStepSuccess');
+    if (details) details.hidden = step !== 'details';
+    if (review) review.hidden = step !== 'review';
+    if (success) success.hidden = step !== 'success';
+  }
+
+  function renderCheckoutReview() {
+    var wrap = document.getElementById('checkoutReviewItems');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+
+    cart.forEach(function (item) {
+      var row = document.createElement('div');
+      row.className = 'review-item';
+      row.innerHTML =
+        '<span class="review-item-name">' + escapeHtml(item.name) + '</span>' +
+        '<span class="review-item-qty">Qty ' + item.qty + '</span>' +
+        '<span class="review-item-price">₹' + (item.qty * item.price).toFixed(2) + '</span>';
+      wrap.appendChild(row);
+    });
+
+    var totalPrice = cart.reduce(function (sum, item) { return sum + item.qty * item.price; }, 0);
+    var reviewSubtotalEl = document.getElementById('checkoutReviewSubtotal');
+    if (reviewSubtotalEl) reviewSubtotalEl.textContent = '₹' + totalPrice.toFixed(2);
+  }
+
+  function placeOrderOnWhatsApp() {
+    var name = (document.getElementById('ckName') || {}).value || '';
+    var mobile = (document.getElementById('ckMobile') || {}).value || '';
+    var address = (document.getElementById('ckAddress') || {}).value || '';
+    var landmark = (document.getElementById('ckLandmark') || {}).value || '';
+    var paymentInput = document.querySelector('input[name="payment"]:checked');
+    var payment = paymentInput ? paymentInput.value : 'Cash on Delivery';
+
+    var totalPrice = cart.reduce(function (sum, item) { return sum + item.qty * item.price; }, 0);
+
+    var lines = [];
+    lines.push('🛒 NEW GROCERY ORDER');
+    lines.push('Customer Name:');
+    lines.push(name.trim());
+    lines.push('Phone:');
+    lines.push(mobile.trim());
+    lines.push('Delivery Address:');
+    lines.push(address.trim());
+    lines.push('Landmark:');
+    lines.push(landmark.trim() || 'N/A');
+    lines.push('Payment:');
+    lines.push(payment);
+    lines.push('==================');
+    lines.push('ORDER ITEMS');
+    lines.push('==================');
+    cart.forEach(function (item) {
+      lines.push(item.name);
+      lines.push('Quantity: ' + item.qty);
+      lines.push('Price: ₹' + (item.qty * item.price).toFixed(2));
+      lines.push('');
+    });
+    lines.push('==================');
+    lines.push('Subtotal:');
+    lines.push('₹' + totalPrice.toFixed(2));
+    lines.push('');
+    lines.push('Thank you.');
+
+    var message = lines.join('\n');
+    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    window.open(url, '_blank', 'noopener');
+
+    showCheckoutStep('success');
   }
 
   function openCheckout() {
@@ -370,6 +469,7 @@
       msg.textContent = '';
       msg.classList.remove('show', 'is-error');
     }
+    showCheckoutStep('details');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     if (overlay) overlay.classList.add('open');
