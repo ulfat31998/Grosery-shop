@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop by Category — Component Preview</title>
+<link rel="stylesheet" href="category-section.css">
+<style>
+  /* page wrapper just for previewing the component in isolation */
+  body{ margin:0; background:#F6F8F7; }
+</style>
+</head>
+<body>
+
+<section class="sbc" id="categories" data-sbc>
+  <div class="sbc-container">
+
+    <div class="sbc-head">
+      <span class="sbc-eyebrow">Aisles</span>
+      <h2>Shop by Category</h2>
+      <p>Choose a category to quickly find your products.</p>
+    </div>
+
+    <div class="sbc-grid">
+
+      <button class="sbc-card" data-category="dairy">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 3h4v3.2l1.6 2V19a2 2 0 0 1-2 2h-3.2a2 2 0 0 1-2-2V8.2l1.6-2z"/>
+            <path d="M9.2 12.5h5.6"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Dairy</span>
+      </button>
+
+      <button class="sbc-card" data-category="rice-atta">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 9c-1.2 0-2-1-2-2.4C7 4.6 8.8 3 12 3s5 1.6 5 3.6C17 8 16.2 9 15 9"/>
+            <path d="M8 9h8l1 10.2a2 2 0 0 1-2 2.3H9a2 2 0 0 1-2-2.3z"/>
+            <path d="M9.5 13h5M9.8 16h4.4"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Rice &amp; Atta</span>
+      </button>
+
+      <button class="sbc-card" data-category="oil-ghee">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 4h6v2.4H9z"/>
+            <path d="M7.5 6.4h9V19a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2z"/>
+            <path d="M12 10.5c1.1 1.2 1.7 2.1 1.7 3a1.7 1.7 0 1 1-3.4 0c0-.9.6-1.8 1.7-3z"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Oil &amp; Ghee</span>
+      </button>
+
+      <button class="sbc-card" data-category="biscuits">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"/>
+            <circle cx="9" cy="10" r=".9" fill="currentColor" stroke="none"/>
+            <circle cx="14.5" cy="9.5" r=".9" fill="currentColor" stroke="none"/>
+            <circle cx="11" cy="14.5" r=".9" fill="currentColor" stroke="none"/>
+            <circle cx="15" cy="14" r=".9" fill="currentColor" stroke="none"/>
+            <circle cx="9.5" cy="15.5" r=".7" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Biscuits</span>
+      </button>
+
+      <button class="sbc-card" data-category="spices">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5.5 12.5a6.5 4 0 0 0 13 0"/>
+            <path d="M4.8 12.5h14.4"/>
+            <path d="M9.5 12.5c0-2 .8-4.4 2.2-6"/>
+            <path d="M15 5.2l2.3 2.1-3.6 4-2.2-2z"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Spices</span>
+      </button>
+
+      <button class="sbc-card" data-category="beverages">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7.5 9h9l-1 10.3a2 2 0 0 1-2 1.7h-3a2 2 0 0 1-2-1.7z"/>
+            <path d="M6.5 9h11l-.8-2.6a1 1 0 0 0-1-.7H8.3a1 1 0 0 0-1 .7z"/>
+            <path d="M13 5.7 14.4 2"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Beverages</span>
+      </button>
+
+      <button class="sbc-card" data-category="snacks">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7.3 8 8 4h8l.7 4"/>
+            <path d="M6.5 8h11l.9 10.8a2 2 0 0 1-2 2.2H7.6a2 2 0 0 1-2-2.2z"/>
+            <path d="M9 12.3 11 14l-.8 2.4M14.8 12.3 13 14.2l.9 2.1"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Snacks</span>
+      </button>
+
+      <button class="sbc-card" data-category="household">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.5 9h3.4v2.4l2.4.9V20a1.4 1.4 0 0 1-1.4 1.4H9.5A1.4 1.4 0 0 1 8.1 20v-7.7l2.4-.9z"/>
+            <path d="M11 9V6.4A1.4 1.4 0 0 1 12.4 5h.6"/>
+            <path d="M13.6 5h2.3"/>
+            <path d="M16.4 4.3v1.4"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Household</span>
+      </button>
+
+      <button class="sbc-card" data-category="personal-care">
+        <span class="sbc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+        <span class="sbc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.3 9h5.4V19a2 2 0 0 1-2 2h-1.4a2 2 0 0 1-2-2z"/>
+            <path d="M10.3 9V6.6h3.4V9"/>
+            <path d="M11 6.6V4.6h2v2"/>
+            <path d="M10.3 13.5h5.4"/>
+          </svg>
+        </span>
+        <span class="sbc-name">Personal Care</span>
+      </button>
+
+    </div>
+
+    <!-- ============ Demo product grid — replace with your real product markup.
+         Keep data-sbc-product="<same slug as the category button>" on each card. ============ -->
+    <div class="sbc-products">
+      <div class="sbc-products-head">
+        <h3>Products <span data-sbc-count style="color:#5C6E64;font-weight:500;"></span></h3>
+        <button class="sbc-clear" type="button">Clear filter</button>
+      </div>
+
+      <div class="sbc-product-grid">
+        <div class="sbc-product" data-sbc-product="dairy"><span class="sbc-product-tag">Dairy</span><h4>Toned Milk</h4><span>500ml pouch</span></div>
+        <div class="sbc-product" data-sbc-product="dairy"><span class="sbc-product-tag">Dairy</span><h4>Fresh Paneer</h4><span>200g block</span></div>
+        <div class="sbc-product" data-sbc-product="rice-atta"><span class="sbc-product-tag">Rice &amp; Atta</span><h4>Basmati Rice</h4><span>5 kg bag</span></div>
+        <div class="sbc-product" data-sbc-product="rice-atta"><span class="sbc-product-tag">Rice &amp; Atta</span><h4>Whole Wheat Atta</h4><span>10 kg bag</span></div>
+        <div class="sbc-product" data-sbc-product="oil-ghee"><span class="sbc-product-tag">Oil &amp; Ghee</span><h4>Pure Cow Ghee</h4><span>1 L jar</span></div>
+        <div class="sbc-product" data-sbc-product="oil-ghee"><span class="sbc-product-tag">Oil &amp; Ghee</span><h4>Sunflower Oil</h4><span>1 L pouch</span></div>
+        <div class="sbc-product" data-sbc-product="biscuits"><span class="sbc-product-tag">Biscuits</span><h4>Marie Gold</h4><span>250g pack</span></div>
+        <div class="sbc-product" data-sbc-product="biscuits"><span class="sbc-product-tag">Biscuits</span><h4>Cream Sandwich</h4><span>150g pack</span></div>
+        <div class="sbc-product" data-sbc-product="spices"><span class="sbc-product-tag">Spices</span><h4>Turmeric Powder</h4><span>200g pack</span></div>
+        <div class="sbc-product" data-sbc-product="spices"><span class="sbc-product-tag">Spices</span><h4>Garam Masala</h4><span>100g pack</span></div>
+        <div class="sbc-product" data-sbc-product="beverages"><span class="sbc-product-tag">Beverages</span><h4>Instant Coffee</h4><span>100g jar</span></div>
+        <div class="sbc-product" data-sbc-product="beverages"><span class="sbc-product-tag">Beverages</span><h4>Orange Juice</h4><span>1 L carton</span></div>
+        <div class="sbc-product" data-sbc-product="snacks"><span class="sbc-product-tag">Snacks</span><h4>Potato Chips</h4><span>52g pack</span></div>
+        <div class="sbc-product" data-sbc-product="snacks"><span class="sbc-product-tag">Snacks</span><h4>Roasted Namkeen</h4><span>200g pack</span></div>
+        <div class="sbc-product" data-sbc-product="household"><span class="sbc-product-tag">Household</span><h4>Floor Cleaner</h4><span>1 L bottle</span></div>
+        <div class="sbc-product" data-sbc-product="household"><span class="sbc-product-tag">Household</span><h4>Dish Wash Bar</h4><span>200g bar</span></div>
+        <div class="sbc-product" data-sbc-product="personal-care"><span class="sbc-product-tag">Personal Care</span><h4>Herbal Shampoo</h4><span>340ml bottle</span></div>
+        <div class="sbc-product" data-sbc-product="personal-care"><span class="sbc-product-tag">Personal Care</span><h4>Moisturising Lotion</h4><span>200ml bottle</span></div>
+      </div>
+
+      <div class="sbc-empty">No products in this category yet.</div>
+    </div>
+
+  </div>
+</section>
+
+<script src="category-section.js"></script>
+</body>
+</html>
