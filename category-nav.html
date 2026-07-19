@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop by Category — Component Preview</title>
+<link rel="stylesheet" href="category-nav.css">
+<style>
+  /* page wrapper just for previewing the component in isolation */
+  body{ margin:0; background:#F7F8F7; }
+</style>
+</head>
+<body>
+
+<!-- ==========================================================
+     GS = "Grocery Store" component namespace.
+     Everything below is self-contained: drop this section into
+     any page, keep the two asset files alongside it, and it
+     works with zero extra markup elsewhere.
+=========================================================== -->
+<section class="gs" data-gs>
+  <div class="gs-container">
+
+    <!-- ---------- Search bar ---------- -->
+    <div class="gs-search-wrap">
+      <label class="gs-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input
+          type="search"
+          inputmode="search"
+          placeholder="Search for atta, dal, oil, paneer..."
+          aria-label="Search products"
+          data-gs-search
+        >
+      </label>
+    </div>
+  </div>
+
+  <!-- Zero-height marker the script watches to know when the bar
+       below has stuck to the top of the viewport. -->
+  <div data-gs-stick-sentinel style="height:1px;"></div>
+
+  <!-- ---------- Sticky category navigation ----------
+       Horizontally scrollable chip bar. Sticks to the top of the
+       viewport as the page scrolls. Add/remove a category by
+       adding/removing one <button> here — the JS and CSS need
+       no changes to support more categories. ---------- -->
+  <nav class="gs-cat-bar" data-gs-cat-bar aria-label="Product categories">
+    <div class="gs-cat-scroll" data-gs-cat-scroll role="tablist">
+
+      <button class="gs-chip is-active" data-category="all" role="tab" aria-selected="true">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+        </span>
+        <span class="gs-chip-label">All Products</span>
+      </button>
+
+      <button class="gs-chip" data-category="vegetables" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3c3 0 5 2.5 5 6 0 5.2-2.6 9-5 12-2.4-3-5-6.8-5-12 0-3.5 2-6 5-6z"/><path d="M12 3c.6-1 1.8-1.6 3-1.6"/></svg>
+        </span>
+        <span class="gs-chip-label">Vegetables</span>
+      </button>
+
+      <button class="gs-chip" data-category="fruits" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 9c3.6 0 6 2.6 6 6.1 0 3.3-2.4 5.9-4.8 5.9-.6 0-1-.2-1.2-.2-.2 0-.6.2-1.2.2C8.4 21 6 18.4 6 15.1 6 11.6 8.4 9 12 9z"/><path d="M12 9c0-1.8.9-3.2 2.2-4"/></svg>
+        </span>
+        <span class="gs-chip-label">Fruits</span>
+      </button>
+
+      <button class="gs-chip" data-category="dairy" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M9.5 3h5v3l1.5 2v11a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 8 19V8l1.5-2z"/><path d="M8.3 11.5h7.4"/></svg>
+        </span>
+        <span class="gs-chip-label">Dairy</span>
+      </button>
+
+      <button class="gs-chip" data-category="rice-atta" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M8.5 8h7l.9 9.3a2 2 0 0 1-2 2.2h-3.8a2 2 0 0 1-2-2.2z"/><path d="M9.5 8c-1 0-1.7-.8-1.7-2C7.8 4.5 9.4 3.2 12 3.2s4.2 1.3 4.2 2.8c0 1.2-.7 2-1.7 2"/></svg>
+        </span>
+        <span class="gs-chip-label">Rice &amp; Atta</span>
+      </button>
+
+      <button class="gs-chip" data-category="oil-ghee" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M9.5 4.5h5V7h-5z"/><path d="M8.2 7h7.6v11.5a1.8 1.8 0 0 1-1.8 1.8h-4a1.8 1.8 0 0 1-1.8-1.8z"/><path d="M12 10.8c1 1 1.6 1.9 1.6 2.7a1.6 1.6 0 1 1-3.2 0c0-.8.6-1.7 1.6-2.7z"/></svg>
+        </span>
+        <span class="gs-chip-label">Oil &amp; Ghee</span>
+      </button>
+
+      <button class="gs-chip" data-category="biscuits" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><circle cx="9.3" cy="10" r=".8" fill="currentColor" stroke="none"/><circle cx="14.5" cy="9.6" r=".8" fill="currentColor" stroke="none"/><circle cx="11.2" cy="14.2" r=".8" fill="currentColor" stroke="none"/><circle cx="14.8" cy="13.8" r=".8" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <span class="gs-chip-label">Biscuits</span>
+      </button>
+
+      <button class="gs-chip" data-category="spices" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M5.8 12.5a6.2 3.8 0 0 0 12.4 0"/><path d="M5.2 12.5h13.6"/><path d="M9.8 12.5c0-1.9.7-4.1 2-5.6"/><path d="M15 5.8l2.1 2-3.3 3.7-2.1-1.9z"/></svg>
+        </span>
+        <span class="gs-chip-label">Spices</span>
+      </button>
+
+      <button class="gs-chip" data-category="beverages" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M7.8 9h8.4l-1 9.8a1.9 1.9 0 0 1-1.9 1.7h-2.6a1.9 1.9 0 0 1-1.9-1.7z"/><path d="M6.9 9h10.2l-.7-2.4a1 1 0 0 0-1-.7H8.6a1 1 0 0 0-1 .7z"/><path d="M13 6.9 14.3 3.5"/></svg>
+        </span>
+        <span class="gs-chip-label">Beverages</span>
+      </button>
+
+      <button class="gs-chip" data-category="snacks" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M7.5 8 8.2 4.5h7.6L16.5 8"/><path d="M6.7 8h10.6l.9 10.2a2 2 0 0 1-2 2.2H7.8a2 2 0 0 1-2-2.2z"/><path d="M9.2 12 11 13.6l-.7 2.2M14.6 12l-1.6 1.8.8 2"/></svg>
+        </span>
+        <span class="gs-chip-label">Snacks</span>
+      </button>
+
+      <button class="gs-chip" data-category="household" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.3 9h3.6v2.3l2.3.9v7.4a1.4 1.4 0 0 1-1.4 1.4h-5.4a1.4 1.4 0 0 1-1.4-1.4v-7.4l2.3-.9z"/><path d="M10.8 9V6.5a1.3 1.3 0 0 1 1.3-1.3h.6"/><path d="M13.4 5.2h2.1M16 4.5v1.3"/></svg>
+        </span>
+        <span class="gs-chip-label">Household</span>
+      </button>
+
+      <button class="gs-chip" data-category="personal-care" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M9.3 9h5.4v10.2a1.8 1.8 0 0 1-1.8 1.8h-1.8a1.8 1.8 0 0 1-1.8-1.8z"/><path d="M10.2 9V6.7h3.6V9"/><path d="M11 6.7V4.8h2v1.9"/><path d="M9.3 13.2h5.4"/></svg>
+        </span>
+        <span class="gs-chip-label">Personal Care</span>
+      </button>
+
+      <button class="gs-chip" data-category="bakery" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M4.5 13c0-3.6 3.2-6.6 7.5-6.6s7.5 3 7.5 6.6c0 3.4-1.6 6-3.4 6H7.9c-1.8 0-3.4-2.6-3.4-6z"/><path d="M8.2 13.2c0-1.2.9-2.6 2-3.3M13.6 13.2c0-1.2.7-2.4 1.6-3.2"/></svg>
+        </span>
+        <span class="gs-chip-label">Bakery</span>
+      </button>
+
+      <button class="gs-chip" data-category="grains-pulses" role="tab" aria-selected="false">
+        <span class="gs-chip-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.5 9.5h11l-.8 8.7a2 2 0 0 1-2 1.8H9.3a2 2 0 0 1-2-1.8z"/><path d="M6.2 9.5a5.7 3 0 0 1 11.6 0"/><circle cx="10.3" cy="13.5" r=".9" fill="currentColor" stroke="none"/><circle cx="13.7" cy="14.3" r=".9" fill="currentColor" stroke="none"/><circle cx="11.6" cy="16.6" r=".9" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <span class="gs-chip-label">Grains &amp; Pulses</span>
+      </button>
+
+    </div>
+  </nav>
+
+  <div class="gs-container">
+    <!-- ---------- Product grid ----------
+         Real product markup goes here. Each card needs only:
+         - `data-gs-product` = the matching category slug
+         - `data-gs-name`    = searchable name (lowercase is fine, JS lowercases it anyway)
+         Everything else is presentational. To scale to 500+ products,
+         render this markup from your product data source — the
+         filter script needs no changes. ---------- -->
+    <div class="gs-products">
+      <div class="gs-products-head">
+        <h2>Products</h2>
+        <span class="gs-count" data-gs-count></span>
+      </div>
+
+      <div class="gs-product-grid" data-gs-grid>
+
+        <div class="gs-product" data-gs-product="vegetables" data-gs-name="fresh tomato">
+          <span class="gs-product-tag">Vegetables</span>
+          <h3>Fresh Tomato</h3>
+          <span class="gs-meta">1 kg</span>
+          <span class="gs-price">₹42</span>
+        </div>
+        <div class="gs-product" data-gs-product="vegetables" data-gs-name="onion">
+          <span class="gs-product-tag">Vegetables</span>
+          <h3>Onion</h3>
+          <span class="gs-meta">1 kg</span>
+          <span class="gs-price">₹38</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="fruits" data-gs-name="royal gala apple">
+          <span class="gs-product-tag">Fruits</span>
+          <h3>Royal Gala Apple</h3>
+          <span class="gs-meta">1 kg</span>
+          <span class="gs-price">₹189</span>
+        </div>
+        <div class="gs-product" data-gs-product="fruits" data-gs-name="banana">
+          <span class="gs-product-tag">Fruits</span>
+          <h3>Banana</h3>
+          <span class="gs-meta">6 pcs</span>
+          <span class="gs-price">₹48</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="dairy" data-gs-name="toned milk">
+          <span class="gs-product-tag">Dairy</span>
+          <h3>Toned Milk</h3>
+          <span class="gs-meta">500 ml pouch</span>
+          <span class="gs-price">₹28</span>
+        </div>
+        <div class="gs-product" data-gs-product="dairy" data-gs-name="fresh paneer">
+          <span class="gs-product-tag">Dairy</span>
+          <h3>Fresh Paneer</h3>
+          <span class="gs-meta">200 g block</span>
+          <span class="gs-price">₹89</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="rice-atta" data-gs-name="basmati rice">
+          <span class="gs-product-tag">Rice &amp; Atta</span>
+          <h3>Basmati Rice</h3>
+          <span class="gs-meta">5 kg bag</span>
+          <span class="gs-price">₹549</span>
+        </div>
+        <div class="gs-product" data-gs-product="rice-atta" data-gs-name="whole wheat atta">
+          <span class="gs-product-tag">Rice &amp; Atta</span>
+          <h3>Whole Wheat Atta</h3>
+          <span class="gs-meta">10 kg bag</span>
+          <span class="gs-price">₹425</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="oil-ghee" data-gs-name="pure cow ghee">
+          <span class="gs-product-tag">Oil &amp; Ghee</span>
+          <h3>Pure Cow Ghee</h3>
+          <span class="gs-meta">1 L jar</span>
+          <span class="gs-price">₹649</span>
+        </div>
+        <div class="gs-product" data-gs-product="oil-ghee" data-gs-name="sunflower oil">
+          <span class="gs-product-tag">Oil &amp; Ghee</span>
+          <h3>Sunflower Oil</h3>
+          <span class="gs-meta">1 L pouch</span>
+          <span class="gs-price">₹149</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="biscuits" data-gs-name="marie gold">
+          <span class="gs-product-tag">Biscuits</span>
+          <h3>Marie Gold</h3>
+          <span class="gs-meta">250 g pack</span>
+          <span class="gs-price">₹35</span>
+        </div>
+        <div class="gs-product" data-gs-product="biscuits" data-gs-name="cream sandwich">
+          <span class="gs-product-tag">Biscuits</span>
+          <h3>Cream Sandwich</h3>
+          <span class="gs-meta">150 g pack</span>
+          <span class="gs-price">₹30</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="spices" data-gs-name="turmeric powder">
+          <span class="gs-product-tag">Spices</span>
+          <h3>Turmeric Powder</h3>
+          <span class="gs-meta">200 g pack</span>
+          <span class="gs-price">₹58</span>
+        </div>
+        <div class="gs-product" data-gs-product="spices" data-gs-name="garam masala">
+          <span class="gs-product-tag">Spices</span>
+          <h3>Garam Masala</h3>
+          <span class="gs-meta">100 g pack</span>
+          <span class="gs-price">₹72</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="beverages" data-gs-name="instant coffee">
+          <span class="gs-product-tag">Beverages</span>
+          <h3>Instant Coffee</h3>
+          <span class="gs-meta">100 g jar</span>
+          <span class="gs-price">₹235</span>
+        </div>
+        <div class="gs-product" data-gs-product="beverages" data-gs-name="orange juice">
+          <span class="gs-product-tag">Beverages</span>
+          <h3>Orange Juice</h3>
+          <span class="gs-meta">1 L carton</span>
+          <span class="gs-price">₹120</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="snacks" data-gs-name="potato chips">
+          <span class="gs-product-tag">Snacks</span>
+          <h3>Potato Chips</h3>
+          <span class="gs-meta">52 g pack</span>
+          <span class="gs-price">₹20</span>
+        </div>
+        <div class="gs-product" data-gs-product="snacks" data-gs-name="roasted namkeen">
+          <span class="gs-product-tag">Snacks</span>
+          <h3>Roasted Namkeen</h3>
+          <span class="gs-meta">200 g pack</span>
+          <span class="gs-price">₹65</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="household" data-gs-name="floor cleaner">
+          <span class="gs-product-tag">Household</span>
+          <h3>Floor Cleaner</h3>
+          <span class="gs-meta">1 L bottle</span>
+          <span class="gs-price">₹149</span>
+        </div>
+        <div class="gs-product" data-gs-product="household" data-gs-name="dish wash bar">
+          <span class="gs-product-tag">Household</span>
+          <h3>Dish Wash Bar</h3>
+          <span class="gs-meta">200 g bar</span>
+          <span class="gs-price">₹22</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="personal-care" data-gs-name="herbal shampoo">
+          <span class="gs-product-tag">Personal Care</span>
+          <h3>Herbal Shampoo</h3>
+          <span class="gs-meta">340 ml bottle</span>
+          <span class="gs-price">₹210</span>
+        </div>
+        <div class="gs-product" data-gs-product="personal-care" data-gs-name="moisturising lotion">
+          <span class="gs-product-tag">Personal Care</span>
+          <h3>Moisturising Lotion</h3>
+          <span class="gs-meta">200 ml bottle</span>
+          <span class="gs-price">₹175</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="bakery" data-gs-name="brown bread">
+          <span class="gs-product-tag">Bakery</span>
+          <h3>Brown Bread</h3>
+          <span class="gs-meta">400 g loaf</span>
+          <span class="gs-price">₹48</span>
+        </div>
+        <div class="gs-product" data-gs-product="bakery" data-gs-name="butter croissant">
+          <span class="gs-product-tag">Bakery</span>
+          <h3>Butter Croissant</h3>
+          <span class="gs-meta">2 pcs</span>
+          <span class="gs-price">₹85</span>
+        </div>
+
+        <div class="gs-product" data-gs-product="grains-pulses" data-gs-name="toor dal">
+          <span class="gs-product-tag">Grains &amp; Pulses</span>
+          <h3>Toor Dal</h3>
+          <span class="gs-meta">1 kg pack</span>
+          <span class="gs-price">₹165</span>
+        </div>
+        <div class="gs-product" data-gs-product="grains-pulses" data-gs-name="chana dal">
+          <span class="gs-product-tag">Grains &amp; Pulses</span>
+          <h3>Chana Dal</h3>
+          <span class="gs-meta">1 kg pack</span>
+          <span class="gs-price">₹110</span>
+        </div>
+
+      </div>
+
+      <!-- ---------- Empty state ---------- -->
+      <div class="gs-empty" data-gs-empty>
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M8.5 11h5"/></svg>
+        <strong>No Products Found</strong>
+        <span>Try a different category or search term.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="category-nav.js"></script>
+</body>
+</html>

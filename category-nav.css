@@ -1,0 +1,321 @@
+/* =============================================================
+   SHOP BY CATEGORY — premium compact category navigation
+   Palette: forest green / white / light gray
+   Style reference: Blinkit / Zepto / Instamart / Apple / Amazon
+============================================================= */
+
+:root{
+  --cn-green-900: #0E3B2E;
+  --cn-green-700: #146C4B;
+  --cn-green-600: #1D8A5E;
+  --cn-green-500: #22A06B;
+  --cn-green-50:  #EAF6EF;
+  --cn-gray-50:   #F7F8F7;
+  --cn-gray-100:  #F0F2F1;
+  --cn-gray-200:  #E4E8E5;
+  --cn-gray-400:  #9AA6A0;
+  --cn-ink:       #16241C;
+  --cn-ink-soft:  #62766B;
+  --cn-white:     #FFFFFF;
+  --cn-radius-chip: 20px;
+  --cn-radius-card: 16px;
+  --cn-shadow-sm: 0 1px 2px rgba(14,59,46,0.05), 0 2px 8px rgba(14,59,46,0.06);
+  --cn-shadow-md: 0 10px 28px rgba(14,59,46,0.14);
+  --cn-shadow-bar: 0 4px 16px rgba(14,59,46,0.06);
+  --cn-ease: cubic-bezier(.22,.9,.32,1);
+  --cn-ease-spring: cubic-bezier(.34,1.56,.64,1);
+}
+
+.gs{
+  background: var(--cn-white);
+  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Manrope, sans-serif);
+  color: var(--cn-ink);
+}
+
+.gs *{ box-sizing: border-box; }
+
+.gs-container{
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* ---------------------------------------------------------------
+   SEARCH BAR
+--------------------------------------------------------------- */
+.gs-search-wrap{
+  padding: .85rem 0 .7rem;
+}
+.gs-search{
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--cn-gray-50);
+  border: 1px solid var(--cn-gray-200);
+  border-radius: 14px;
+  padding: 0 .9rem;
+  height: 46px;
+  transition: border-color .25s var(--cn-ease), background .25s var(--cn-ease), box-shadow .25s var(--cn-ease);
+}
+.gs-search:focus-within{
+  background: var(--cn-white);
+  border-color: var(--cn-green-500);
+  box-shadow: 0 0 0 4px var(--cn-green-50);
+}
+.gs-search svg{
+  width: 18px;
+  height: 18px;
+  color: var(--cn-ink-soft);
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+.gs-search input{
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: .92rem;
+  color: var(--cn-ink);
+  padding: 0 .7rem;
+  font-family: inherit;
+}
+.gs-search input::placeholder{ color: var(--cn-gray-400); }
+
+/* ---------------------------------------------------------------
+   STICKY CATEGORY BAR
+--------------------------------------------------------------- */
+.gs-cat-bar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--cn-white);
+  padding-block: .7rem;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: box-shadow .25s var(--cn-ease), border-color .25s var(--cn-ease);
+  border-bottom: 1px solid transparent;
+}
+/* applied via JS once the page has scrolled past the bar's natural position */
+.gs-cat-bar.is-stuck{
+  box-shadow: var(--cn-shadow-bar);
+  border-bottom-color: var(--cn-gray-200);
+}
+
+.gs-cat-scroll{
+  display: flex;
+  gap: .55rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2px 2px 8px; /* small headroom so focus rings + shadows aren't clipped */
+  margin-bottom: -8px;
+}
+.gs-cat-scroll::-webkit-scrollbar{ display: none; }
+
+/* edge fade to hint more content is scrollable */
+.gs-cat-bar{
+  --fade-w: 28px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-w), #000 calc(100% - var(--fade-w)), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-w), #000 calc(100% - var(--fade-w)), transparent 100%);
+}
+.gs-container:has(.gs-cat-bar){ padding-inline: 0; } /* fallback safety, harmless if unsupported */
+
+/* ---------------------------------------------------------------
+   CATEGORY CHIP
+--------------------------------------------------------------- */
+.gs-chip{
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  height: 42px;
+  padding: 0 1rem 0 .7rem;
+  background: var(--cn-white);
+  border: 1.5px solid var(--cn-gray-200);
+  border-radius: var(--cn-radius-chip);
+  cursor: pointer;
+  appearance: none;
+  font-family: inherit;
+  color: var(--cn-ink);
+  white-space: nowrap;
+  scroll-snap-align: start;
+  transition: background .25s var(--cn-ease), border-color .25s var(--cn-ease),
+              color .25s var(--cn-ease), transform .18s var(--cn-ease-spring),
+              box-shadow .25s var(--cn-ease);
+}
+.gs-cat-scroll{ scroll-snap-type: x proximity; }
+.gs-cat-scroll > .gs-chip:first-child{ margin-left: clamp(1rem, 4vw, 2.5rem); }
+.gs-cat-scroll > .gs-chip:last-child{ margin-right: clamp(1rem, 4vw, 2.5rem); }
+
+.gs-chip-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.gs-chip-icon svg{
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gs-chip-label{
+  font-weight: 600;
+  font-size: .86rem;
+  letter-spacing: -.01em;
+}
+
+/* hover / focus (desktop, mouse) */
+@media (hover: hover){
+  .gs-chip:hover{
+    border-color: var(--cn-green-500);
+    color: var(--cn-green-700);
+    transform: translateY(-1px);
+  }
+  .gs-chip.is-active:hover{ color: var(--cn-white); }
+}
+
+.gs-chip:active{ transform: scale(.96); }
+
+.gs-chip:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px var(--cn-green-50), 0 0 0 4.5px var(--cn-green-500);
+}
+
+/* active state — solid green fill, white text/icon */
+.gs-chip.is-active{
+  background: var(--cn-green-600);
+  border-color: var(--cn-green-600);
+  color: var(--cn-white);
+  box-shadow: var(--cn-shadow-md);
+}
+.gs-chip.is-active:active{ transform: scale(.96); }
+
+@media (prefers-reduced-motion: reduce){
+  .gs-chip{ transition: none !important; }
+  .gs-cat-scroll{ scroll-behavior: auto; }
+}
+
+/* ---------------------------------------------------------------
+   PRODUCT GRID
+--------------------------------------------------------------- */
+.gs-products{
+  padding-block: 1.5rem clamp(2.5rem, 6vw, 4rem);
+}
+.gs-products-head{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.gs-products-head h2{
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  margin: 0;
+  color: var(--cn-green-900);
+}
+.gs-count{
+  font-size: .82rem;
+  color: var(--cn-ink-soft);
+  font-weight: 500;
+}
+
+.gs-product-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .85rem;
+}
+@media (min-width: 560px){ .gs-product-grid{ grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 860px){ .gs-product-grid{ grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1180px){ .gs-product-grid{ grid-template-columns: repeat(5, 1fr); } }
+
+.gs-product{
+  background: var(--cn-white);
+  border: 1px solid var(--cn-gray-200);
+  border-radius: var(--cn-radius-card);
+  padding: 1rem .95rem;
+  transition: opacity .3s var(--cn-ease), transform .3s var(--cn-ease), box-shadow .25s var(--cn-ease), border-color .25s var(--cn-ease);
+}
+.gs-product:hover{
+  box-shadow: var(--cn-shadow-sm);
+  border-color: var(--cn-gray-400);
+  transform: translateY(-2px);
+}
+.gs-product-tag{
+  display: inline-block;
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--cn-green-600);
+  background: var(--cn-green-50);
+  padding: .22rem .5rem;
+  border-radius: 999px;
+  margin-bottom: .55rem;
+}
+.gs-product h3{
+  margin: 0 0 .2rem;
+  font-size: .92rem;
+  color: var(--cn-ink);
+  font-weight: 700;
+}
+.gs-product .gs-meta{
+  font-size: .8rem;
+  color: var(--cn-ink-soft);
+  display: block;
+  margin-bottom: .5rem;
+}
+.gs-product .gs-price{
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--cn-green-900);
+}
+
+/* fade transition when the filtered set changes */
+.gs-product.is-hidden{ display: none; }
+.gs-product.is-entering{
+  animation: gs-fade-in .35s var(--cn-ease);
+}
+@keyframes gs-fade-in{
+  from{ opacity: 0; transform: translateY(6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce){
+  .gs-product{ transition: none !important; animation: none !important; }
+}
+
+/* ---------------------------------------------------------------
+   EMPTY STATE
+--------------------------------------------------------------- */
+.gs-empty{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .6rem;
+  padding: 3rem 1rem;
+  color: var(--cn-ink-soft);
+  background: var(--cn-gray-50);
+  border-radius: var(--cn-radius-card);
+}
+.gs-empty.is-visible{ display: flex; }
+.gs-empty svg{
+  width: 34px;
+  height: 34px;
+  stroke: var(--cn-gray-400);
+  fill: none;
+  stroke-width: 1.5;
+}
+.gs-empty strong{
+  font-size: .95rem;
+  color: var(--cn-ink);
+}
+.gs-empty span{ font-size: .85rem; }
