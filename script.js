@@ -12,6 +12,7 @@
     initHeaderScroll();
     initMobileNav();
     initSearchPanel();
+    initCategoryFilter();
     initRevealAnimations();
     initCart();
     initCheckout();
@@ -84,6 +85,85 @@
         panel.classList.remove('open');
         openBtn.setAttribute('aria-expanded', 'false');
       });
+    }
+  }
+
+  /* ---------- Category navigation + product filtering ---------- */
+  function initCategoryFilter() {
+    var scrollTrack = document.getElementById('catScroll');
+    var pills = document.querySelectorAll('.cat-pill');
+    var searchInput = document.getElementById('searchInput');
+    var noProductsMsg = document.getElementById('noProductsMsg');
+    var cards = document.querySelectorAll('#featuredGrid .product-card');
+    if (!pills.length || !cards.length) return;
+
+    var activeCategory = 'all';
+    var filterTimer;
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        activeCategory = pill.getAttribute('data-category') || 'all';
+
+        pills.forEach(function (p) {
+          p.classList.remove('active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('active');
+        pill.setAttribute('aria-selected', 'true');
+
+        pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
+        applyFilter();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        applyFilter();
+      });
+    }
+
+    function applyFilter() {
+      var query = (searchInput && searchInput.value ? searchInput.value : '').toLowerCase().trim();
+      var visibleCount = 0;
+
+      clearTimeout(filterTimer);
+
+      cards.forEach(function (card) {
+        var cat = card.getAttribute('data-category') || '';
+        var name = (card.getAttribute('data-name') || '').toLowerCase();
+        var matchesCategory = activeCategory === 'all' || cat === activeCategory;
+        var matchesSearch = !query || name.indexOf(query) !== -1;
+        var shouldShow = matchesCategory && matchesSearch;
+
+        if (shouldShow) {
+          card.classList.remove('hide');
+          card.classList.remove('fade-hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('fade-hidden');
+        }
+      });
+
+      filterTimer = setTimeout(function () {
+        cards.forEach(function (card) {
+          if (card.classList.contains('fade-hidden')) {
+            card.classList.add('hide');
+          }
+        });
+      }, 280);
+
+      if (noProductsMsg) noProductsMsg.hidden = visibleCount !== 0;
+    }
+
+    /* Let vertical mouse-wheel scroll move the pill bar horizontally on desktop */
+    if (scrollTrack) {
+      scrollTrack.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          scrollTrack.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
     }
   }
 

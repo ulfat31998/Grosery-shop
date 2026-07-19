@@ -125,58 +125,83 @@
     </div>
   </div>
 
-  <!-- ============ CATEGORIES ============ -->
-  <section class="section" id="categories">
-    <div class="container">
-      <div class="section-head reveal-up">
-        <span class="eyebrow">Browse the crates</span>
-        <h2>Shop by Category</h2>
-        <p>Six aisles, everything cross-docked from farm to fridge in a single day.</p>
-      </div>
+  <!-- ============ CATEGORY NAVIGATION ============ -->
+  <section class="cat-nav-section" id="categories" aria-label="Shop by category">
+    <div class="cat-nav-bar">
+      <div class="container cat-nav-inner">
+        <div class="cat-scroll" id="catScroll" role="tablist" aria-label="Product categories">
 
-      <div class="cat-grid">
-        <a href="#featured" class="cat-card reveal-up">
-          <img src="vegetables.jpg" alt="Fresh seasonal vegetables" loading="lazy">
-          <div class="cat-card-body">
-            <h3>Vegetables</h3>
-            <span>32 items</span>
-          </div>
-        </a>
-        <a href="#featured" class="cat-card reveal-up">
-          <img src="fruits.jpg" alt="Fresh seasonal fruits" loading="lazy">
-          <div class="cat-card-body">
-            <h3>Fruits</h3>
-            <span>27 items</span>
-          </div>
-        </a>
-        <a href="#featured" class="cat-card reveal-up">
-          <img src="dairy.jpg" alt="Milk, cheese and dairy products" loading="lazy">
-          <div class="cat-card-body">
-            <h3>Dairy & Eggs</h3>
-            <span>19 items</span>
-          </div>
-        </a>
-        <a href="#featured" class="cat-card reveal-up">
-          <img src="bakery.jpg" alt="Freshly baked bread" loading="lazy">
-          <div class="cat-card-body">
-            <h3>Bakery</h3>
-            <span>14 items</span>
-          </div>
-        </a>
-        <a href="#featured" class="cat-card reveal-up">
-          <img src="grains.jpg" alt="Rice, grains and pulses" loading="lazy">
-          <div class="cat-card-body">
-            <h3>Grains & Pulses</h3>
-            <span>21 items</span>
-          </div>
-        </a>
-        <a href="#featured" class="cat-card reveal-up">
-          <img src="oil.jpg" alt="Cooking oil and ghee" loading="lazy">
-          <div class="cat-card-body">
-            <h3>Oil & Ghee</h3>
-            <span>11 items</span>
-          </div>
-        </a>
+          <button type="button" class="cat-pill active" data-category="all" role="tab" aria-selected="true">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span>All Products</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="vegetables" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4.5 0 7-3.5 7-8 0-3-1.8-5.5-3.5-7 0 2-1 3-2 3.5.5-2 0-4-1.5-5.5-.5 2-2 3.5-3.5 5C7 10.5 5 13 5 16c0 3 3 5 7 5Z"/></svg></span>
+            <span>Vegetables</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="fruits" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c.6-1 1.7-1.6 3-1.5"/><path d="M12 8c-4.4 0-7 2.7-7 6.3 0 3.6 2.8 6.7 6 6.7.6 0 1.3-.1 1-.1s.4.1 1 .1c3.2 0 6-3.1 6-6.7C19 10.7 16.4 8 12 8Z"/></svg></span>
+            <span>Fruits</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="dairy" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6l1 3-2 2v13a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7L8 5Z"/><path d="M8 12h8"/></svg></span>
+            <span>Dairy</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="rice-atta" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1.5 10a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg></span>
+            <span>Rice & Atta</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="oil-ghee" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4l1 3-1.5 1.5V10c2 1 3 3.2 3 5.5a6 6 0 0 1-12 0c0-2.3 1-4.5 3-5.5V7.5L9 6Z"/></svg></span>
+            <span>Oil & Ghee</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="biscuits" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r=".9" fill="currentColor" stroke="none"/><circle cx="14" cy="9" r=".9" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r=".9" fill="currentColor" stroke="none"/><circle cx="10" cy="15" r=".9" fill="currentColor" stroke="none"/></svg></span>
+            <span>Biscuits</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="spices" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 2-7 5-10Z"/></svg></span>
+            <span>Spices</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="beverages" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1.2 11a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8Z"/><path d="M9 8V5a3 3 0 0 1 6 0v3"/></svg></span>
+            <span>Beverages</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="snacks" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2Z"/><path d="M9 9 8 4h8l-1 5"/></svg></span>
+            <span>Snacks</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="household" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9"/><path d="M10 20v-6h4v6"/></svg></span>
+            <span>Household</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="personal-care" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4.5 4.5 0 0 1 7-3.8A4.5 4.5 0 0 1 19 11c0 5.6-7 10-7 10Z"/></svg></span>
+            <span>Personal Care</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="bakery" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-4 3.5-8 8-8s8 4 8 8Z"/><path d="M4 12h16l-1 6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/></svg></span>
+            <span>Bakery</span>
+          </button>
+
+          <button type="button" class="cat-pill" data-category="grains-pulses" role="tab" aria-selected="false">
+            <span class="cat-pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.2"/><circle cx="16" cy="9" r="2.2"/><circle cx="8" cy="16" r="2.2"/><circle cx="16" cy="16" r="2.2"/></svg></span>
+            <span>Grains & Pulses</span>
+          </button>
+
+        </div>
       </div>
     </div>
   </section>
@@ -192,7 +217,7 @@
 
       <div class="product-grid" id="featuredGrid">
         <!-- Product cards injected by script.js also work statically; kept static for no-JS support -->
-        <article class="product-card reveal-up" data-name="Vine Tomatoes" data-price="3.49">
+        <article class="product-card reveal-up" data-name="Vine Tomatoes" data-price="3.49" data-category="vegetables">
           <div class="product-media">
             <span class="stamp stamp-mini">Fresh</span>
             <img src="tomato.jpg" alt="Vine-ripened tomatoes" loading="lazy">
@@ -208,7 +233,7 @@
           </div>
         </article>
 
-        <article class="product-card reveal-up" data-name="Royal Gala Apples" data-price="4.29">
+        <article class="product-card reveal-up" data-name="Royal Gala Apples" data-price="4.29" data-category="fruits">
           <div class="product-media">
             <span class="stamp stamp-mini">New</span>
             <img src="apple.jpg" alt="Royal Gala apples" loading="lazy">
@@ -224,7 +249,7 @@
           </div>
         </article>
 
-        <article class="product-card reveal-up" data-name="Farmhouse Whole Milk" data-price="2.19">
+        <article class="product-card reveal-up" data-name="Farmhouse Whole Milk" data-price="2.19" data-category="dairy">
           <div class="product-media">
             <img src="milk.jpg" alt="Farmhouse whole milk bottle" loading="lazy">
             <button class="add-btn" data-name="Farmhouse Whole Milk" data-price="2.19" aria-label="Add Farmhouse Whole Milk to cart">+</button>
@@ -239,7 +264,7 @@
           </div>
         </article>
 
-        <article class="product-card reveal-up" data-name="Sourdough Loaf" data-price="3.99">
+        <article class="product-card reveal-up" data-name="Sourdough Loaf" data-price="3.99" data-category="bakery">
           <div class="product-media">
             <span class="stamp stamp-mini">Baked Today</span>
             <img src="bread.jpg" alt="Sourdough bread loaf" loading="lazy">
@@ -255,7 +280,7 @@
           </div>
         </article>
 
-        <article class="product-card reveal-up" data-name="Raw Wildflower Honey" data-price="6.49">
+        <article class="product-card reveal-up" data-name="Raw Wildflower Honey" data-price="6.49" data-category="snacks">
           <div class="product-media">
             <img src="honey.jpg" alt="Jar of raw wildflower honey" loading="lazy">
             <button class="add-btn" data-name="Raw Wildflower Honey" data-price="6.49" aria-label="Add Raw Wildflower Honey to cart">+</button>
@@ -270,7 +295,7 @@
           </div>
         </article>
 
-        <article class="product-card reveal-up" data-name="Free-range Eggs" data-price="3.29">
+        <article class="product-card reveal-up" data-name="Free-range Eggs" data-price="3.29" data-category="dairy">
           <div class="product-media">
             <span class="stamp stamp-mini">Fresh</span>
             <img src="eggs.jpg" alt="Tray of free-range eggs" loading="lazy">
@@ -286,6 +311,8 @@
           </div>
         </article>
       </div>
+
+      <p class="no-products" id="noProductsMsg" hidden>No Products Found. Try a different category or search term.</p>
     </div>
   </section>
 
